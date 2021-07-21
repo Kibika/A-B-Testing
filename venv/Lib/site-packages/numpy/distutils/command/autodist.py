@@ -46,45 +46,20 @@ def check_restrict(cmd):
     return ''
 
 
-def check_compiler_gcc(cmd):
-    """Check if the compiler is GCC."""
-
+def check_compiler_gcc4(cmd):
+    """Return True if the C compiler is GCC 4.x."""
     cmd._check_compiler()
     body = textwrap.dedent("""
         int
         main()
         {
-        #if (! defined __GNUC__)
-        #error gcc required
+        #if (! defined __GNUC__) || (__GNUC__ < 4)
+        #error gcc >= 4 required
         #endif
             return 0;
         }
         """)
     return cmd.try_compile(body, None, None)
-
-
-def check_gcc_version_at_least(cmd, major, minor=0, patchlevel=0):
-    """
-    Check that the gcc version is at least the specified version."""
-
-    cmd._check_compiler()
-    version = '.'.join([str(major), str(minor), str(patchlevel)])
-    body = textwrap.dedent("""
-        int
-        main()
-        {
-        #if (! defined __GNUC__) || (__GNUC__ < %(major)d) || \\
-                (__GNUC_MINOR__ < %(minor)d) || \\
-                (__GNUC_PATCHLEVEL__ < %(patchlevel)d)
-        #error gcc >= %(version)s required
-        #endif
-            return 0;
-        }
-        """)
-    kw = {'version': version, 'major': major, 'minor': minor,
-          'patchlevel': patchlevel}
-
-    return cmd.try_compile(body % kw, None, None)
 
 
 def check_gcc_function_attribute(cmd, attribute, name):
