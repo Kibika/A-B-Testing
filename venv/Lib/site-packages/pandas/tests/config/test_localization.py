@@ -4,11 +4,7 @@ import os
 
 import pytest
 
-from pandas._config.localization import (
-    can_set_locale,
-    get_locales,
-    set_locale,
-)
+from pandas._config.localization import can_set_locale, get_locales, set_locale
 
 from pandas.compat import is_platform_windows
 

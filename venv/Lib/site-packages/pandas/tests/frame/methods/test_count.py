@@ -1,7 +1,4 @@
-from pandas import (
-    DataFrame,
-    Series,
-)
+from pandas import DataFrame, Series
 import pandas._testing as tm
 
 
