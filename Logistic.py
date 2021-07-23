@@ -16,3 +16,4 @@ if __name__ == "__main__":
     np.random.seed(40)
 
     data=pd.read_csv(data_url,sep=",")
+
