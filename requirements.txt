@@ -27,3 +27,7 @@ zipp==3.5.0
 dash-bootstrap-components>=0.10.1
 mlflow
 dvc
+seaborn
+statsmodels
+xgboost
+sklearn
