@@ -33,7 +33,8 @@ PATH=pathlib.Path(__file__).parent
 DATA_PATH=PATH.joinpath("./data").resolve()
 
 path = DATA_PATH.joinpath("response.csv")
-repo = 'D:/Stella/Documents/10_Academy/Week-2/abtest-mlops'
+#repo = 'D:/Stella/Documents/10_Academy/Week-2/abtest-mlops'
+repo = /tmp/dvc-storage
 version = 'v2'
 
 data_url = dvc.api.get_url(path=path,
