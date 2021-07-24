@@ -1,0 +1,13 @@
+name: docker-abtest
+
+docker_env:
+  image:  mlflow-docker-abtest
+
+entry_points:
+  main:
+    parameters:
+      max_depth: {type: int, default: None}
+      max_features: {type: int, default: 'auto'}
+      max_samples: {type: int, default: None}
+      n_estimators: {type: int, default: 100}
+     command: "RandomForest.py --max_depth {max_depth} --max_features {max_features} --max_samples {max_samples} --n_estimators{n_estimators}"
