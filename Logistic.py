@@ -133,4 +133,5 @@ if __name__ == "__main__":
 
     plt.tight_layout()
     plt.savefig("feature_importance.png", dpi=120)
+    mlflow.log_artifact("feature_importance.png")
     plt.close()
