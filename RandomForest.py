@@ -93,10 +93,7 @@ if __name__ == "__main__":
     log_result = clf_rf.fit(x_train, y_train)
     predictions_log = clf_rf.predict(x_validation)
     (accuracy, precision, recall) = eval_metrics(y_validation, predictions_log)
-    # Report training set score
-    train_score = clf_rf.score(x_train, y_train) * 100
-    # Report test set score
-    test_score = clf_rf.score(x_validate, y_validate) * 100
+
 
     # Write scores to a file
     with open("metrics.txt", 'w') as outfile:
@@ -161,5 +158,4 @@ if __name__ == "__main__":
 
     plt.tight_layout()
     plt.savefig("feature_importance.png", dpi=120)
-    mlflow.log_artifact("feature_importance.png")
-    plt.close()
+
