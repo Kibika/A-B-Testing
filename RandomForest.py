@@ -93,7 +93,10 @@ if __name__ == "__main__":
     log_result = clf_rf.fit(x_train, y_train)
     predictions_log = clf_rf.predict(x_validation)
     (accuracy, precision, recall) = eval_metrics(y_validation, predictions_log)
-
+    # Report training set score
+    train_score = regr.score(X_train, y_train) * 100
+    # Report test set score
+    test_score = regr.score(X_test, y_test) * 100
 
     # Write scores to a file
     with open("metrics.txt", 'w') as outfile:
@@ -129,7 +132,7 @@ if __name__ == "__main__":
 
     mlflow.log_artifact("confusion_matrix.png")
 
-    plt.close()
+    plt.show()
 
     # plot roc curve
     y_valid_proba = clf_rf.predict_proba(x_validation)[::, 1]
@@ -139,7 +142,7 @@ if __name__ == "__main__":
     plt.legend(loc=4)
     plt.savefig("roc.png")
     mlflow.log_artifact("roc.png")
-    plt.close()
+    plt.show()
 
     #plot feature importance
     importances = clf_rf.feature_importances_
@@ -158,4 +161,5 @@ if __name__ == "__main__":
 
     plt.tight_layout()
     plt.savefig("feature_importance.png", dpi=120)
+    plt.show()
 
