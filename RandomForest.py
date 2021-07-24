@@ -96,7 +96,7 @@ if __name__ == "__main__":
         # Report training set score
     train_score = clf_rf.score(x_train, y_train) * 100
     # Report test set score
-    test_score = clf_rf.score(x_validate, y_validate) * 100
+    test_score = clf_rf.score(x_validation, y_validation) * 100
 
     # Write scores to a file
     with open("metrics.txt", 'w') as outfile:
